@@ -1,7 +1,11 @@
 <?php
 include 'connect.php';
 
-$sql = "SELECT * FROM belgisch_bier";
+$keyword = $_GET["keyword"];
+$searchFunction = $_GET["searchFunction"];
+
+
+$sql = "SELECT * FROM belgisch_bier WHERE $searchFunction LIKE '%{$keyword}%'";
 $result = mysqli_query($conn, $sql);
 
 echo "<table border=\"1\">";
